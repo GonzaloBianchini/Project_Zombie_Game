@@ -137,27 +137,6 @@ void Disparo::updateMovement()
     else if(!_direction)
         _speed.x=1.f;
 
-
-    //Este bloque es para mover los disparos por teclado, se utiliza para pruebas
-    /*
-    _speed={0.f,0.f};
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
-    {
-        _speed.x = -4.f;
-        //_estate=GOING_LEFT;
-    }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))
-    {
-        _speed.x = 4.f;
-        //_estate=GOING_RIGHT;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num8))
-        _speed.y = 4.f;
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-        _speed.y = -4.f;
-
-    */
-
     _shoot_sprite.move(_speed);
 }
 
@@ -196,18 +175,14 @@ void Disparo::update()
 
 }
 
-void Disparo::checkWindowBounds()
+bool Disparo::checkWindowBounds(sf::RenderTarget& target)
 {
-
+    if((_shoot_sprite.getPosition().x < 0) || (_shoot_sprite.getPosition().x > target.getSize().x))
+        return true;
+    else
+        return false;
 }
 
 
 
-/*
-void Disparo::checkCollision()
-{
-    //checkWindowBounds();
-    //checkZombieCollision();
-}
-*/
 

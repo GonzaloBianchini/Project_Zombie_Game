@@ -3,10 +3,19 @@
 #include "Funciones.h"
 #include <iostream>
 
+#include<cstdlib>       //para rand y srand
+#include <ctime>        //para time
+
+//prueba commit
+
+
+
 using namespace std;
 
 int main()
 {
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));  //inicio semilla para rand
+
     sf::RenderWindow window(sf::VideoMode(1220, 800), "Zombies vs PlantaZ");
     window.setFramerateLimit(60);
     MENU_PRINCIPAL menu(window.getSize().x,window.getSize().y);
