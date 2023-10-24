@@ -105,6 +105,8 @@ void GAME_PLAY::draw(sf::RenderWindow& window)
 
     window.draw(_life_bar);
 
+    window.draw(_energy_bar);
+
     window.draw(_text_pause);
 
 }
@@ -263,6 +265,8 @@ void GAME_PLAY::update(sf::RenderTarget& window)
         updatePrize();
 
         _life_bar.update();
+
+        _energy_bar.update();
 
         updatePlants2();
 

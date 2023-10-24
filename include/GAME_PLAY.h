@@ -14,6 +14,7 @@
 #include "GESTOR_PLANTAS.h"
 #include "Prize.h"
 #include "Lifebar.h"
+#include "EnergyBar.h"
 
 
 class GAME_PLAY
@@ -104,6 +105,8 @@ private:
     bool _prize_generated;
 
     Lifebar _life_bar;
+
+    EnergyBar _energy_bar;
 
     GESTOR_DISPAROS _shoot_manager;
 
