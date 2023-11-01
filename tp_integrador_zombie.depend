@@ -2687,12 +2687,12 @@
 	<SFML/Graphics.hpp>
 	"Colisionable.h"
 
-1698077879 source:c:\users\54911\documents\github\project_zombie_game\src\game_play.cpp
+1698118770 source:c:\users\54911\documents\github\project_zombie_game\src\game_play.cpp
 	"GAME_PLAY.h"
 	<iostream>
 	<SFML/Graphics.hpp>
 
-1698118617 c:\users\54911\documents\github\project_zombie_game\include\game_play.h
+1698757289 c:\users\54911\documents\github\project_zombie_game\include\game_play.h
 	<random>
 	"ZOMBIE.h"
 	"PLATAFORMA.h"

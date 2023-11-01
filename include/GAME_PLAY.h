@@ -96,7 +96,7 @@ private:
 
     ZOMBIE Z1;
 
-    std::vector<Planta*> _array_plantas;
+    //std::vector<Planta*> _array_plantas;
     GESTOR_PLANTAS _plant_manager;
     sf::Clock _plant_spawn_timer;
 

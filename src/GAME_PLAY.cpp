@@ -164,6 +164,7 @@ void GAME_PLAY::check_collision_platform()
     }
 }
 ///////////////////////////////////////
+/*
 void GAME_PLAY::updatePlants()
 {
     for(auto it=_array_plantas.begin(); it!=_array_plantas.end();)   //inicio el iterador IT en el principio del array y recorro hasta el final de array
@@ -186,7 +187,7 @@ void GAME_PLAY::updatePlants()
         }
     }
 }
-
+*/
 ///////////////////////////////////////
 
 void GAME_PLAY::updateShootAndLife(sf::RenderTarget& window)
