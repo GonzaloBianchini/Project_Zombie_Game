@@ -1,8 +1,6 @@
-#define SFML_NO_DEPRECATED_WARNINGS
+//#define SFML_NO_DEPRECATED_WARNINGS
 #include "SubMenu.h"
-#include<iostream>
-#include "Funciones.h"
-#include "MENU_PRINCIPAL.h"
+
 using namespace std;
 
 SubMenu::SubMenu(float width, float height)
@@ -33,14 +31,11 @@ SubMenu::SubMenu(float width, float height)
     _subMenu[2].setPosition(sf::Vector2f(width / 6, height / 3.5 * 2));
 
     _subMenu[3].setFont(_fontItem);
-    _subMenu[3].setString("CARGAR PARTIDA");
+    _subMenu[3].setString("VOLVER AL MENU ANTERIOR");
     _subMenu[3].setColor(sf::Color(0,0,0));
     _subMenu[3].setPosition(sf::Vector2f(width / 6, height / 3.5 * 2.5));
 
-    _subMenu[4].setFont(_fontItem);
-    _subMenu[4].setString("VOLVER AL MENU ANTERIOR");
-    _subMenu[4].setColor(sf::Color(0,0,0));
-    _subMenu[4].setPosition(sf::Vector2f(width / 6, height / 3.5 * 3));
+
 
     _seleccionItem = 0;
 
@@ -54,6 +49,7 @@ SubMenu::~SubMenu()
 
 void SubMenu::draw(sf::RenderTarget& target, sf::RenderStates states)const
 {
+
     target.draw(_spriteSubMenu,states);
     for (int x = 0; x < Item; x++)
     {
@@ -63,21 +59,25 @@ void SubMenu::draw(sf::RenderTarget& target, sf::RenderStates states)const
 
 void SubMenu::up()
 {
+
     if (_seleccionItem - 1 >= 0)
     {
         _subMenu[_seleccionItem].setColor(sf::Color(0,0,0));
         _seleccionItem--;
+
         _subMenu[_seleccionItem].setColor(sf::Color::Green);
     }
 }
 
 void SubMenu::down()
 {
+
     if (_seleccionItem + 1 < Item)
     {
         _subMenu[_seleccionItem].setColor(sf::Color(0,0,0));
 
         _seleccionItem++;
+
         _subMenu[_seleccionItem].setColor(sf::Color::Green);
     }
 }
@@ -89,8 +89,12 @@ void SubMenu::Opciones() {
     // *******************Menu************************
     MENU_PRINCIPAL menu_p(window.getSize().x, window.getSize().y);
     SubMenu sub_menu(window.getSize().x, window.getSize().y);
+    Seleccion_de_zombie selec_z(window.getSize().x, window.getSize().y);
+ Audio Sound_3b(3);
     // *******************Titulo**********************
     sf::Font font;
+
+
 
     if (!font.loadFromFile("Font/Riot Act 2.otf"))
     {
@@ -102,8 +106,10 @@ void SubMenu::Opciones() {
     Text.setPosition(sf::Vector2f(600 / 3.5, 40));
     Text.setCharacterSize(80);
 
+    Sound_3b.audioON();
     while (window.isOpen())
     {
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -113,9 +119,11 @@ void SubMenu::Opciones() {
                 switch (event.key.code)
                 {
                 case sf::Keyboard::Up:
+
                     sub_menu.up();
                     break;
                 case sf::Keyboard::Down:
+
                     sub_menu.down();
                     break;
                 case sf::Keyboard::Return:
@@ -125,9 +133,6 @@ void SubMenu::Opciones() {
                         cout << "Jugar" << endl;
                         window.close();
                         Juego();
-
-
-
                         break;
                     case 1:
                         cout << "INGRESAR NOMBRE" << endl;
@@ -136,14 +141,15 @@ void SubMenu::Opciones() {
                         break;
                     case 2:
                         cout << "SELECCIONAR ZOMBIE" << endl;
+                         window.close();
+                         selec_z.Opciones();
+
                         break;
                     case 3:
-                        cout << "CARGAR PARTIDA" << endl;
-                        break;
-                    case 4:
                         cout << "VOLVER AL MENU ANTERIOR" << endl;
                         window.close();
                         menu_p.Opciones();
+
                         break;
                     }
                     break;

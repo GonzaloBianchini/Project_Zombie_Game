@@ -1,6 +1,7 @@
 #include "DISPARO.h"
 
-Disparo::Disparo(TIPO tipo,sf::Vector2f pos,bool direct)
+
+Disparo::Disparo(TIPO tipo,sf::Vector2f pos,bool direct): Sound_8(8)
 {
     _start_position=pos;
     _type=tipo;
@@ -10,7 +11,7 @@ Disparo::Disparo(TIPO tipo,sf::Vector2f pos,bool direct)
     initAnimation();
 }
 
-Disparo::Disparo()
+Disparo::Disparo(): Sound_8(8)
 {
 
 }
@@ -36,7 +37,7 @@ void Disparo::initVariables()
 {
     //En este caso, y a diferencia del sprite sheet de las plantas, este sprite sheet esta mas desordenado
     //esta mas desordenado y por ende las variables son todas distintas en cada tipo de disparo
-
+Sound_8.audioON();
     switch(_type)
     {
         case FIRE:
@@ -47,6 +48,7 @@ void Disparo::initVariables()
             _damage_shoot=3;
             _speed={0.f,0.f};
             _shoot_sprite.setPosition(_start_position.x,_start_position.y);
+            esTipo = TIPO::FIRE;
             break;
         case GREEN:
             _width_texture=15;
@@ -56,6 +58,7 @@ void Disparo::initVariables()
             _damage_shoot=1;
             _speed={0.f,0.f};
             _shoot_sprite.setPosition(_start_position.x,_start_position.y);
+            esTipo = TIPO::GREEN;
             break;
         case ICE:
             _width_texture=20;
@@ -65,6 +68,7 @@ void Disparo::initVariables()
             _damage_shoot=2;
             _speed={0.f,0.f};
             _shoot_sprite.setPosition(_start_position.x,_start_position.y);
+            esTipo = TIPO::ICE;
             break;
         case SUPER_GREEN:
             _width_texture=22;
@@ -74,6 +78,7 @@ void Disparo::initVariables()
             _damage_shoot=5;
             _speed={0.f,0.f};
             _shoot_sprite.setPosition(_start_position.x,_start_position.y);
+            esTipo = TIPO::SUPER_GREEN;
             break;
         case BRAIN:
                 _width_texture=30;
@@ -83,6 +88,7 @@ void Disparo::initVariables()
             _damage_shoot=1;
             _speed={0.f,0.f};
             _shoot_sprite.setPosition(_start_position.x,_start_position.y);
+            esTipo = TIPO::BRAIN;
             break;
         default:
             _width_texture=15;
@@ -92,6 +98,7 @@ void Disparo::initVariables()
             _damage_shoot=1;
             _speed={0.f,0.f};
             _shoot_sprite.setPosition(_start_position.x,_start_position.y);
+            esTipo = TIPO::GREEN;
             break;
     }
 
@@ -133,9 +140,30 @@ void Disparo::movement(float x, float y)
 void Disparo::updateMovement()
 {
     if(_direction)
-        _speed.x=-1.f;
+        _speed.x=-4.5;
     else if(!_direction)
-        _speed.x=1.f;
+        _speed.x=4.5;
+
+
+    //Este bloque es para mover los disparos por teclado, se utiliza para pruebas
+    /*
+    _speed={0.f,0.f};
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+    {
+        _speed.x = -4.f;
+        //_estate=GOING_LEFT;
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))
+    {
+        _speed.x = 4.f;
+        //_estate=GOING_RIGHT;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num8))
+        _speed.y = 4.f;
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+        _speed.y = -4.f;
+
+    */
 
     _shoot_sprite.move(_speed);
 }
@@ -183,6 +211,9 @@ bool Disparo::checkWindowBounds(sf::RenderTarget& target)
         return false;
 }
 
-
+TIPO Disparo::getTipo()
+{
+    return esTipo;
+}
 
 

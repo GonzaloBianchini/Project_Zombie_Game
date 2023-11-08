@@ -1,9 +1,13 @@
 #ifndef MENU_PRINCIPAL_H
 #define MENU_PRINCIPAL_H
-
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include "SubMenu.h"
+#include "Audio.h"
+#include<iostream>
+#include "Creditos.h"
 
-#define Item 5
+#define Item_menu 5
 
 
 class MENU_PRINCIPAL: public sf::Drawable
@@ -20,15 +24,18 @@ public:
         return seleccion_item;
     }
      void Opciones();
+     //Audio Sound_3c;
 
 protected:
 
 private:
     int seleccion_item;
     sf::Font font_item;
-    sf::Text menu_p[Item];
+    sf::Text menu_p[Item_menu];
     sf::Sprite _fondo_menu;
     sf::Texture _texture_menu;
+
+
 };
 
 #endif // MENU_PRINCIPAL_H
